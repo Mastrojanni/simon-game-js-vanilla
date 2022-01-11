@@ -1,0 +1,290 @@
+/* 0 - Global */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+
+    background: rgb(1, 31, 63);
+    color: #FFF;
+
+    font-size: calc(10px + 1vw);
+
+    text-align: center;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* 1 - Page Specific */
+/* 1.1 - Header */
+header {
+    width: 100%;
+    min-height: 32px;
+
+    padding: calc(2.5px + 1vw) 0 calc(2.5px + 1.1vw);
+
+    background: rgb(2, 77, 76);
+    box-shadow:
+        inset 0 calc(-2px - 1vw) 25px calc(2px + 0.5vw) rgba(0, 0, 0, 0.1),
+        0 1.5px 0 0 #000;
+}
+
+header > .header__item {
+    display: inline-block;
+
+    margin: 0 1% 0 0;
+}
+
+header > .header__item svg.page__logo {
+    width: calc(15px + 1vw);
+    height: calc(15px + 1vw);
+
+    border-radius: 50%;
+}
+
+header h1.page__title {
+    margin: 0;
+    padding: 0;
+
+    font-size: 1.2rem;
+}
+
+/* 1.2 - Main */
+main {
+    font-family: "Press Start 2P", cursive;
+
+    position: relative;
+
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+main > section {
+    padding: 5% 0;
+}
+
+main > section > .section__item {
+    display: block;
+    
+    margin: 0 0 5%;
+}
+
+main > section > h2 {
+    margin: 0;
+    padding: 0;
+
+    font-size: 1.2rem;
+}
+
+main > section p {
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    margin-bottom: calc(2px + 0.8vw);
+
+    display: flex;
+    place-content: center;
+
+    gap: calc(2px + 0.8vw);
+}
+
+/* 2 - Game */
+.game__container {
+    position: relative;
+}
+
+.game__container .game__item {
+    position: relative;
+
+    display: inline-block;
+
+    width: calc(120px + 5vw);
+    height: calc(120px + 5vw);
+
+    margin: 0;
+    padding: 0;
+
+    border: 10px solid #000;
+
+    cursor: pointer;
+}
+.game__container .game__item:hover {
+    /* box-shadow: inset 0 0 9999px 9999px rgba(0, 0, 0, 0.25); */
+
+    box-shadow: 0 0 20px #000;
+    filter: brightness(0.8);
+}
+
+.game__container .game__item--middle-piece {
+    display: inline-block;
+
+    width: calc(120px + 5vw);
+    height: calc(120px + 5vw);
+
+    background: rgb(2, 77, 76);
+
+    margin: 0;
+    padding: 0;
+
+    border: none;
+    border-radius: 100%;
+
+    cursor: default;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+.game__container .game__item.green {
+    background: rgb(0, 220, 0);
+
+    border-top-left-radius: 100%;
+}
+
+.game__container .game__item.red {
+    background: rgb(220, 0, 0);
+
+    border-top-right-radius: 50%;
+}
+
+.game__container .game__item.yellow {
+    background: rgb(220, 220, 0);
+
+    border-bottom-left-radius: 50%;
+}
+
+.game__container .game__item.blue {
+    background: rgb(0, 0, 220);
+
+    border-bottom-right-radius: 100%;
+}
+
+.game__container .game__item.game__pick-color {
+    opacity: 0.2;
+}
+
+.game__container .game__item.pressed {
+    background-color: rgb(128, 128, 128);
+    
+    box-shadow: 0 0 20px white;
+}
+
+.game--over--helper {
+    background: rgb(255, 0, 0);
+
+    opacity: 0.8;
+}
+
+#game__msg--info {
+    display: inline-block;
+
+    text-align: justify;
+}
+
+/* 3 - Side Controls (Settings) */
+.controls-panel__container {
+    display: inline-block;
+
+    background: transparent;
+
+    position: absolute;
+    left: calc(100% - 10px);
+    top: 30%;
+
+    z-index: 999;
+
+    transform: translateY(-30%);
+    transition: all 200ms;
+}
+.controls-panel__container.show {
+    transform: translate(-100%, -30%);
+}
+
+.controls-panel__container .controls-panel--toggle-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: absolute;
+    right: calc(100% - 10px);
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 16px;
+    padding: 16px;
+
+    background: rgb(2, 77, 76);
+
+    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+.controls-panel__container .controls-panel--toggle-panel .line--left,
+.controls-panel__container .controls-panel--toggle-panel .line--middle,
+.controls-panel__container .controls-panel--toggle-panel .line--right {
+    display: inline-block;
+
+    width: 4px;
+    height: 25px;
+
+    margin-right: 4px;
+
+    background: #000;
+}
+.controls-panel__container .controls-panel--toggle-panel .line--right {
+    margin: 0;
+}
+
+.controls-panel__container .controls-panel__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: calc(5px + 0.8vw);
+
+    flex-direction: column;
+
+    min-height: 160px;
+
+    padding: 1em;
+
+    background: grey;
+
+    border: 10px solid rgb(2, 77, 76);
+    border-radius: 10px;
+}
+
+.controls-panel__container .controls-panel__content h3 {
+    display: inline-block;
+
+    border-bottom: 0.3em solid #000;
+}
+
+.controls-panel__container .controls-panel__content #sound-effects-toggle {
+    display: inline-block;
+
+    width: 2em;
+    height: 2em;
+
+    border: 0.5em solid #000;
+}
+
+.controls-panel__container .controls-panel__content #sound-effects-slider-input {
+    max-width: 100%;
+    width: 80%;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Simon Game</title>
+
+        <link rel="stylesheet" href="style.css">
+        <!-- GAME FONT -->
+        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <div class="header__item">
+                <svg class="page__logo" width="100%" height="100%" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="2" cy="2" r="5" fill="rgb(0, 220, 0)" />
+                    <circle cx="13" cy="2" r="5" fill="rgb(220, 0, 0)" />
+                    
+                    <circle cx="2" cy="13" r="5" fill="rgb(220, 220, 0)" />
+                    <circle cx="13" cy="13" r="5" fill="rgb(0, 0, 220)" />
+
+                    <circle cx="7.5" cy="7.5" r="4" fill="black" />
+                </svg>
+            </div>
+
+            <h1 class="header__item page__title">Simon Game</h1>
+        </header>
+
+        <main>
+            <div class="controls-panel__container">
+                <button class="controls-panel--toggle-panel">
+                    <span class="line--left"></span>
+                    <span class="line--middle"></span>
+                    <span class="line--right"></span>
+                </button>
+
+                <div class="controls-panel__content">
+                    <h3>Audio<br />Settings</h3>
+
+                    <label for="sound-effects-toggle">Enable<br />Effects</label>
+                    <input id="sound-effects-toggle" type="checkbox" name="sound-effects-toggle" value="" />
+
+                    <label for="sound-effects-slider-input">Effects<br />Level</label>
+                    <input id="sound-effects-slider-input" type="range" name="sound-effects-slider-input" min="0" max="10" value="4" step="1" />
+                </div>
+            </div>
+
+            <section>
+                <h2 id="game__msg--status" class="section__item">Game Loading...</h2>
+
+                <div class="game__container section__item">
+                    <div class="game__item--middle-piece"></div>
+
+                    <div class="row">
+                        <button class="game__item green" type="button" data-game-color="green"></button>
+                        <button class="game__item red" type="button" data-game-color="red"></button>
+                    </div>                    
+
+                    <div class="row">
+                        <button class="game__item yellow" type="button" data-game-color="yellow"></button>
+                        <button class="game__item blue" type="button" data-game-color="blue"></button>
+                    </div>
+                </div>
+
+                <div id="game__msg--info"></div>
+            </section>
+        </main>
+
+        <footer></footer>
+
+        <script src="index.js" defer></script>
+    </body>
+</html>
